@@ -1,0 +1,89 @@
+# Building Facades - Target Configuration
+# Collects exterior photographs of buildings showing the main facade.
+#
+# Usage:
+#   python main.py --input items.json --target targets/facades.yaml
+
+name: "Building Facades"
+category: "facade"
+description: "exterior photographs of buildings showing the main facade"
+
+# Keywords that indicate target images (heuristic classifier)
+positive_keywords:
+  # Portuguese
+  - "fachada"
+  - "fachadas"
+  - "perspectiva"
+  - "perspectiva artistica"
+  - "render"
+  - "vista externa"
+  - "exterior"
+  - "frente"
+  - "frontal"
+  - "predio"
+  - "edificio"
+  - "torre"
+  - "empreendimento"
+  # English
+  - "facade"
+  - "building"
+  - "exterior"
+  - "front view"
+  - "perspective"
+
+# Keywords that indicate non-target images
+negative_keywords:
+  - "logo"
+  - "icon"
+  - "icone"
+  - "thumb"
+  - "avatar"
+  - "banner"
+  - "mapa"
+  - "map"
+  - "localizacao"
+  - "perfil"
+  - "profile"
+  - "planta"
+  - "plantas"
+  - "planta baixa"
+  - "planta tipo"
+  - "floor plan"
+  - "floorplan"
+  - "layout"
+  - "blueprint"
+
+# URL path patterns that indicate target images (regex)
+url_patterns:
+  - '/fachadas?/'
+  - '/perspectiva'
+  - '/render'
+  - '/exterior'
+  - 'fachada.*\.jpg'
+  - 'fachada.*\.png'
+
+# Additional keywords for Google Images search queries
+search_keywords:
+  - "facade"
+  - "fachada"
+  - "render"
+  - "perspective"
+  - "exterior"
+
+# Keywords for discovering gallery links during site scraping
+gallery_keywords:
+  - "fachada"
+  - "facade"
+  - "exterior"
+  - "frente"
+  - "area"
+  - "comum"
+
+# OpenAI Vision API prompt customization
+vision:
+  system_message: "You are an expert in visual classification of real estate developments."
+  target_description: "External view of the building (facade, perspective, exterior render)"
+  exclusion_description: "Other image types (floor plans, interiors, logos, maps, etc)"
+  extra_rules:
+    - "Floor plans, layouts, and blueprints must be classified as non-target"
+    - "Interior photographs (rooms, lobbies, hallways) must be classified as non-target"

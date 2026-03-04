@@ -1,0 +1,62 @@
+# Product Photos - Target Configuration
+# Collects product photographs from e-commerce and manufacturer sites.
+#
+# Usage:
+#   python main.py --input items.json --target targets/products.yaml
+
+name: "Product Photos"
+category: "product"
+description: "product photographs on white or neutral backgrounds"
+
+positive_keywords:
+  - "product"
+  - "produto"
+  - "item"
+  - "catalog"
+  - "catalogo"
+  - "merchandise"
+  - "studio"
+  - "packshot"
+  - "product photo"
+  - "product image"
+
+negative_keywords:
+  - "logo"
+  - "icon"
+  - "banner"
+  - "avatar"
+  - "profile"
+  - "chart"
+  - "graph"
+  - "diagram"
+  - "infographic"
+  - "certificate"
+  - "badge"
+  - "watermark"
+
+url_patterns:
+  - '/product/'
+  - '/produto/'
+  - '/catalog/'
+  - '/item/'
+  - '/p/'
+
+search_keywords:
+  - "product photo"
+  - "product image"
+  - "catalog"
+
+gallery_keywords:
+  - "product"
+  - "galeria"
+  - "gallery"
+  - "photos"
+  - "images"
+
+vision:
+  system_message: "You are an expert in identifying product photographs."
+  target_description: "Clear product photograph showing the item (studio shot, lifestyle photo, catalog image)"
+  exclusion_description: "Non-product images (logos, banners, UI elements, text-heavy images, charts)"
+  extra_rules:
+    - "Screenshots of text or specification tables must be classified as non-target"
+    - "Logos and brand images without the actual product must be classified as non-target"
